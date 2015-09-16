@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<!-- 配置上下文内容 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+    	/WEB-INF/spring/spring-*.xml
+    </param-value>
+	</context-param>
+
+	<!-- 配置spring监听 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!--配置字符集过滤 -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ForceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<!-- 配置springMVC -->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/mvc/spring-*.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>

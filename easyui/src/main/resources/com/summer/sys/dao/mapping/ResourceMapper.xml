@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summer.sys.dao.ResourceDao">
+
+	<!-- 获取所有的资源 -->
+	<select id="getAllResources" resultType="com.summer.sys.model.Resource">
+		select resourceid
+		id,resourcename name,url,parentid,type,btntype from t_resource order
+		by BYORDER
+	</select>
+</mapper>
